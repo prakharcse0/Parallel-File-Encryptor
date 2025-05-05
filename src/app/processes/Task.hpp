@@ -1,6 +1,5 @@
 #ifndef TASK_HPP
 #define TASK_HPP
-
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -29,7 +28,6 @@ struct Task {
         return oss.str();
     }
 
-
     static Task fromString(const std::string &taskData) {
         std::istringstream iss(taskData);
         std::string filePath;
@@ -44,7 +42,7 @@ struct Task {
 
         IO io(filePath);
         std::fstream f_stream = io.getFileStream();
-        if(!f_stream.is_open()) 
+        if(!f_stream.is_open())
             throw std::runtime_error("Failed to open file : " + filePath);
         
         return Task(filePath, std::move(f_stream), action);
