@@ -1,1 +1,9 @@
 src/app/encryptDecrypt/cryptionTest.txt
+cryption
+encrypt_decrypt
+main.o
+src/app/encryptDecrypt/Cryption.o
+src/app/encryptDecrypt/CryptionMain.o
+src/app/fileHandling/IO.o
+src/app/fileHandling/ReadEnv.o
+src/app/processes/ProcessManagement.o
