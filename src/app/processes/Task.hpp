@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
+#include <string>
 #include "../fileHandling/IO.hpp"
 
 enum class Action {
@@ -16,6 +18,13 @@ struct Task {
     Action action;
 
     Task(std::string filepath, std::fstream &&stream, Action action) : filePath(filepath), f_stream(std::move(stream)), action(action)  {}
+
+    Task(std::string filepath, std::fstream &&stream, std::string actionString) : filePath(filepath), f_stream(std::move(stream))  {
+        for (char& c : actionString) c = std::toupper(c);
+        if(actionString == "ENCRYPT") action = Action::ENCRYPT;
+        else if(actionString == "DECRYPT") action = Action::DECRYPT;
+        else throw std::runtime_error("Invalid action type");
+    }
 
     ~Task() {
         if (f_stream.is_open())
